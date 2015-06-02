@@ -10,10 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var breedLabel: UILabel!
+    @IBOutlet weak var mainImageView: UIImageView! ;
+    @IBOutlet weak var nameLabel: UILabel! ;
+    @IBOutlet weak var ageLabel: UILabel! ;
+    @IBOutlet weak var breedLabel: UILabel! ;
+    var tigers:Array<Tiger> = []; // globally accessed only when defined outside a method
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,6 @@ class ViewController: UIViewController {
         tiger.name = "Hobbes";
         tiger.breed = "Cotton, Made in China";
         tiger.picture = UIImage(named:"hobbes.jpeg");
-        
-        nameLabel.text = tiger.name;
-        ageLabel.text = "\(tiger.age)";
-        breedLabel.text = tiger.breed;
-        mainImageView.image = tiger.picture;
         
         var anotherTiger = Tiger();
         anotherTiger.age = 0;
@@ -41,12 +37,9 @@ class ViewController: UIViewController {
         yetAnotherTiger.breed = "3D Digital Animation";
         yetAnotherTiger.picture = UIImage(named: "tigress_by_jona.jpg");
         
-        var tigers:Array<Tiger> = [];
-        
         tigers.append(tiger);
         tigers.append(anotherTiger);
         tigers.append(yetAnotherTiger);
-        
         
     }
 
@@ -56,6 +49,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func nextBarBtnPressed(sender: AnyObject) {
+        let randomIndex = Int(arc4random_uniform(UInt32(tigers.count)));
+        let tiger = tigers[randomIndex];
+        
+        nameLabel.text = tiger.name;
+        ageLabel.text = "\(tiger.age)";
+        breedLabel.text = tiger.breed;
+        mainImageView.image = tiger.picture;
     }
 
 }
