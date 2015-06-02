@@ -17,4 +17,14 @@ struct Tiger {
     var breed = "";
     var picture = UIImage(named:"");
     
+    func chuff() -> Void {
+        println("Tiger: CHUFF CHUFF, MUDAFUCKA");
+    }
+    
+    func chuffNTimes (nTimes: Int) -> Void {
+        for i in 0...nTimes {
+            println("Tiger: CHUFF CHUFF #\(i + 1), MUDAFUCKA");
+        }
+    }
+    
 }

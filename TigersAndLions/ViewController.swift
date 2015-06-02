@@ -66,6 +66,7 @@ class ViewController: UIViewController {
         ageLabel.text = "\(tigers[tigerIndex].age)";
         breedLabel.text = tigers[tigerIndex].breed;
         mainImageView.image = tigers[tigerIndex].picture;
+        tigers[tigerIndex].chuff();
         
         println("HI");
         
@@ -116,8 +117,10 @@ class ViewController: UIViewController {
                 self.ageLabel.text = "\(self.tigers[self.tigerIndex].age)";
                 self.breedLabel.text = self.tigers[self.tigerIndex].breed;
                 self.mainImageView.image = self.tigers[self.tigerIndex].picture;
-            }, completion: { (finished: Bool) -> () in } );
-
+            }, completion: { (finished: Bool) -> () in
+                tiger.chuffNTimes(randomIndex);
+            } );
+        
     }
 
 }
