@@ -22,9 +22,20 @@ struct Tiger {
     }
     
     func chuffNTimes (nTimes: Int) -> Void {
+        var randomScream:Int;
         for i in 0...nTimes {
-            println("Tiger: CHUFF CHUFF #\(i + 1), MUDAFUCKA");
+            randomScream = Int(arc4random_uniform(UInt32(2)));
+            if (randomScream == 1){
+                println("Tiger: CHUFF CHUFF #\(i + 1), MUDAFUCKA");
+            } else {
+                println("TIGER SCREAM NUMBER \(i + 1), RAWR");
+            }
         }
+    }
+    
+    func ageInTigerYear(humanAge: Int) -> Int {
+        let tigerAge = humanAge * 3;
+        return tigerAge;
     }
     
 }

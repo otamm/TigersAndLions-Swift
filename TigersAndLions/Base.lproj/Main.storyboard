@@ -63,6 +63,17 @@
                                     <rect key="frame" x="16" y="122" width="368" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Fact" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ad5-aS-n7f">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.63006264940000001" blue="0.13300939170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="0.63006264940000001" blue="0.13300939170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="483" width="283" height="186"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -72,6 +83,7 @@
                                 <exclude reference="Ouq-OO-wXU"/>
                                 <exclude reference="Gbc-0v-9Ns"/>
                                 <exclude reference="Gsy-G4-jUx"/>
+                                <exclude reference="Ad5-aS-n7f"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -81,6 +93,7 @@
                                 <include reference="Ouq-OO-wXU"/>
                                 <include reference="Gbc-0v-9Ns"/>
                                 <include reference="Gsy-G4-jUx"/>
+                                <include reference="Ad5-aS-n7f"/>
                             </mask>
                         </variation>
                     </view>
@@ -89,6 +102,7 @@
                         <outlet property="breedLabel" destination="Gsy-G4-jUx" id="Xu4-9C-BJ2"/>
                         <outlet property="mainImageView" destination="oIs-EH-eGB" id="fEa-cs-l24"/>
                         <outlet property="nameLabel" destination="Ouq-OO-wXU" id="Jlr-o5-ag7"/>
+                        <outlet property="randomFact" destination="Ad5-aS-n7f" id="CO1-Av-VFI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

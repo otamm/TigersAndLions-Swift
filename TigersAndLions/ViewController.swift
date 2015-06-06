@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel! ;
     @IBOutlet weak var ageLabel: UILabel! ;
     @IBOutlet weak var breedLabel: UILabel! ;
+    @IBOutlet weak var randomFact: UILabel! ;
     
     // arrays, one for the tigers, other for the possible animations
     
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
     // indexes
     var tigerIndex:Int = 0;
     var animationIndex:Int = 0;
+    var factIndex:Int = 0;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +63,16 @@ class ViewController: UIViewController {
         // without this line, the animation at index 0 would never be the first, the process was 75% randomized; now it is 100%.
         animationIndex = Int(arc4random_uniform(UInt32(animations.count)));
         
+        // factIndex will be set at either 0 or 1, so if the total number of facts exceeds 2, the first two in the array will have a smaller probability of being shown first.
+        factIndex = Int(arc4random_uniform(UInt32(2)));
         // displays tiger info when UIView loads;
         nameLabel.text = tigers[tigerIndex].name;
         ageLabel.text = "\(tigers[tigerIndex].age)";
         breedLabel.text = tigers[tigerIndex].breed;
         mainImageView.image = tigers[tigerIndex].picture;
-        tigers[tigerIndex].chuff();
         
-        println("HI");
+        randomFact.text = self.getRandomFacts(factIndex);
+        tigers[tigerIndex].chuff();
         
         
     }
@@ -76,6 +80,25 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // will get the facts out of a method. Learning exercise as it could just be an array.
+    func getRandomFacts(lastUsedIndex: Int) -> String {
+        
+        let randomFacts = [
+            "The Tiger is the biggest species in the cat family",
+            "Tigers can reach a length of 3.3 meters",
+            "A group of tigers is known as an 'ambush' or 'streak'"
+        ];
+        
+        var newIndex:Int = Int(arc4random_uniform(UInt32(randomFacts.count)));
+        
+        while (newIndex == lastUsedIndex) {
+            newIndex = Int(arc4random_uniform(UInt32(randomFacts.count)));
+        }
+        
+        self.factIndex = newIndex;
+        return randomFacts[newIndex];
     }
 
     @IBAction func nextBarBtnPressed(sender: AnyObject) {
@@ -100,16 +123,17 @@ class ViewController: UIViewController {
         }
         
         tigerIndex = randomIndex;
-        
+        // assures a different animation each time
         var randomIndex2 = Int(arc4random_uniform(UInt32(animations.count)));
         while (animationIndex == randomIndex2)
         {
             randomIndex2 = Int(arc4random_uniform(UInt32(animations.count)));
         }
-        // assures a different animation each time
         animationIndex = randomIndex2;
         
         let tiger = tigers[randomIndex];
+        
+        // assures a different fact each time
         
         UIView.transitionWithView(self.view, duration: 1, options: animations[animationIndex], animations:
             {
@@ -117,8 +141,10 @@ class ViewController: UIViewController {
                 self.ageLabel.text = "\(self.tigers[self.tigerIndex].age)";
                 self.breedLabel.text = self.tigers[self.tigerIndex].breed;
                 self.mainImageView.image = self.tigers[self.tigerIndex].picture;
+                self.randomFact.text = self.getRandomFacts(self.factIndex);
             }, completion: { (finished: Bool) -> () in
                 tiger.chuffNTimes(randomIndex);
+                println(" THIS TIGER'S AGE IS \(tiger.age), ITS AGE IN HUMAN YEARS ISSSS \(tiger.ageInTigerYear(tiger.age))");
             } );
         
     }
